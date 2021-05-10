@@ -5,7 +5,7 @@ export const setWeatherData = (value) => {
     };
 };
 
-export const setArtists = () => {
+export const appInit = () => {
     return {
         type: 'APP_INIT'
     };
