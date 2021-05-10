@@ -3,11 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import theme from './theme';
+import { applyMiddleware, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import appReducer from './reducers';
+import createSagaMiddelware from 'redux-saga';
+import { watcherSaga } from './sagas';
+
+const sagaMiddleware = createSagaMiddelware();
+const middleware = [sagaMiddleware];
+
+const store = createStore(appReducer, applyMiddleware(...middleware));
+
+sagaMiddleware.run(watcherSaga);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
