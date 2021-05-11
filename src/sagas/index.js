@@ -1,10 +1,11 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { requestWeatherData } from '../api';
-import { setWeatherData } from '../actions';
+import { setWeatherData, selectDate } from '../actions';
 import dayjs from 'dayjs';
 import dayjsPluginUTC from 'dayjs-plugin-utc';
 
 export const getTempScale = (state) => state.tempScale;
+export const getSelectedDate = (state) => state.selectedDate;
 
 export function* handleWeatherData(action) {
     try {
@@ -31,7 +32,14 @@ export function* handleWeatherData(action) {
             date['averageTemp'] = date.dataPoints.reduce((sum, next) => sum + next.main.temp, 0) / date.dataPoints.length;
         });
 
+        const selectedDate = yield select(getSelectedDate);
+        if (selectedDate?.date) {
+            console.log(selectedDate)
+            yield put(selectDate(weatherData.filter((item) => item.date === selectedDate.date)[0]));
+        }
+
         yield put(setWeatherData(weatherData));
+
     } catch (err) {
         console.log(err);
     }

@@ -12,6 +12,13 @@ export const setTemperatureScale = (value) => {
     };
 };
 
+export const selectDate = (value) => {
+    return {
+        type: 'SELECT_DATE',
+        payload: value
+    };
+};
+
 export const appInit = () => {
     return {
         type: 'APP_INIT'

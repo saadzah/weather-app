@@ -12,12 +12,14 @@ import Radio from '@material-ui/core/Radio';
 import './Home.css';
 import { useDispatch } from 'react-redux';
 import { setTemperatureScale } from '../actions/index';
+import SimpleBarChart from '../components/SimpleBarChart/SimpleBarChart';
 
 const Home = () => {
 
     const dispatch = useDispatch();
     const weatherData = useSelector(state => state.weatherData);
     const tempScale = useSelector(state => state.tempScale);
+    const selectedDate = useSelector(state => state.selectedDate);
 
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 3;
@@ -48,7 +50,7 @@ const Home = () => {
                     Past Forecast
                 </Button>
                 <Button
-                    color="Secondary"
+                    color="secondary"
                     endIcon={<ArrowForward />}
                     onClick={() => setCurrentPage(currentPage + 1)}
                     disabled={currentPage === totalPages}
@@ -56,9 +58,18 @@ const Home = () => {
                     Future Forecast
                 </Button>
             </div>
+
             <div>
                 <WeatherCardList data={weatherData.slice((currentPage - 1) * pageSize, currentPage * pageSize)} />
             </div>
+
+            {selectedDate?.date &&
+                <div style={{ height: '400px' }}>
+                    <h3>Date: {selectedDate?.date}</h3>
+                    <SimpleBarChart data={selectedDate?.dataPoints} />
+                </div>
+            }
+
         </>
     )
 }

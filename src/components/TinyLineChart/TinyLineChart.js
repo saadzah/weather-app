@@ -14,7 +14,7 @@ const TinyLineChart = ({ data }) => {
     });
 
     return (
-        <ResponsiveContainer width="100%" height="30%">
+        <ResponsiveContainer width="100%" height="40%">
             <LineChart data={chartData}>
                 <Line type="monotone" dataKey="temp" stroke="#8884d8" strokeWidth={2} dot={false} />
                 <YAxis type="number" domain={['dataMin', 'dataMax']} hide={true}/>
