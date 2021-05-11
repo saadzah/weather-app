@@ -13,8 +13,6 @@ const TinyLineChart = ({ data }) => {
         });
     });
 
-    console.log(chartData)
-
     return (
         <ResponsiveContainer width="100%" height="30%">
             <LineChart data={chartData}>

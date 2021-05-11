@@ -24,7 +24,6 @@ const Home = () => {
     const totalPages = Math.ceil(weatherData.length / pageSize);
 
     const handleScaleChange = (event) => {
-        console.log(event.target.value)
         dispatch(setTemperatureScale(event.target.value));
     };
 
@@ -46,7 +45,7 @@ const Home = () => {
                     onClick={() => setCurrentPage(currentPage - 1)}
                     disabled={currentPage === 1}
                 >
-                    Previous Days Forecast
+                    Past Forecast
                 </Button>
                 <Button
                     color="Secondary"
@@ -54,7 +53,7 @@ const Home = () => {
                     onClick={() => setCurrentPage(currentPage + 1)}
                     disabled={currentPage === totalPages}
                 >
-                    Future Days Forecast
+                    Future Forecast
                 </Button>
             </div>
             <div>
