@@ -8,6 +8,10 @@ const theme = createMuiTheme(
                 paper: "#333333",
                 default: "#212121"
             },
+            secondary: {
+                main: "#8884d8",
+                dark: "#8884d8"
+            }
         },
         typography: {
             fontFamily: [
