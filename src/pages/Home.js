@@ -31,44 +31,51 @@ const Home = () => {
 
     return (
         <>
-            <h2>Temperature Scale</h2>
-            <FormControl component="fieldset">
-                <RadioGroup aria-label="gender" name="gender1" value={tempScale} onChange={handleScaleChange} row>
-                    <FormControlLabel value="imperial" control={<Radio />} label="Fahrenheit" />
-                    <FormControlLabel value="metric" control={<Radio />} label="Celsius" />
-                </RadioGroup>
-            </FormControl>
-
-            <h1>Forecast</h1>
-            <div className="nav-button-container">
-                <Button
-                    color="secondary"
-                    startIcon={<ArrowBack />}
-                    onClick={() => setCurrentPage(currentPage - 1)}
-                    disabled={currentPage === 1}
-                >
-                    Past Forecast
-                </Button>
-                <Button
-                    color="secondary"
-                    endIcon={<ArrowForward />}
-                    onClick={() => setCurrentPage(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                >
-                    Future Forecast
-                </Button>
-            </div>
-
-            <div>
-                <WeatherCardList data={weatherData.slice((currentPage - 1) * pageSize, currentPage * pageSize)} />
-            </div>
-
-            {selectedDate?.date &&
-                <div style={{ height: '400px' }}>
-                    <h3>Date: {selectedDate?.date}</h3>
-                    <SimpleBarChart data={selectedDate?.dataPoints} />
+            <section>
+                <div>
+                    <h1>City: Berlin, DE</h1>
                 </div>
-            }
+
+            </section>
+            <section>
+                <h1>Forecast</h1>
+                <h3>Temperature Scale</h3>
+                <FormControl component="fieldset">
+                    <RadioGroup aria-label="gender" name="gender1" value={tempScale} onChange={handleScaleChange} row>
+                        <FormControlLabel value="imperial" control={<Radio />} label="Fahrenheit" />
+                        <FormControlLabel value="metric" control={<Radio />} label="Celsius" />
+                    </RadioGroup>
+                </FormControl>
+                <div className="nav-button-container">
+                    <Button
+                        color="secondary"
+                        startIcon={<ArrowBack />}
+                        onClick={() => setCurrentPage(currentPage - 1)}
+                        disabled={currentPage === 1}
+                    >
+                        Past Forecast
+                </Button>
+                    <Button
+                        color="secondary"
+                        endIcon={<ArrowForward />}
+                        onClick={() => setCurrentPage(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                    >
+                        Future Forecast
+                </Button>
+                </div>
+
+                <div>
+                    <WeatherCardList data={weatherData.slice((currentPage - 1) * pageSize, currentPage * pageSize)} />
+                </div>
+
+                {selectedDate?.date &&
+                    <div style={{ height: '400px' }}>
+                        <h3>Date: {selectedDate?.date}</h3>
+                        <SimpleBarChart data={selectedDate?.dataPoints} />
+                    </div>
+                }
+            </section>
 
         </>
     )
