@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from './theme';
 import { applyMiddleware, createStore } from 'redux';
@@ -22,10 +22,10 @@ sagaMiddleware.run(watcherSaga);
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <ThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <App />
-      </ThemeProvider>
+      </MuiThemeProvider >
     </React.StrictMode>
   </Provider>,
   document.getElementById('root')

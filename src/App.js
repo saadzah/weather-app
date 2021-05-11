@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { appInit } from './actions';
 import { useEffect } from 'react';
 
+import Home from './pages/Home';
+
 function App() {
 
   const dispatch = useDispatch();
@@ -13,9 +15,11 @@ function App() {
 
 
   return (
-    <div>
-      Sample Text
-    </div>
+    <>
+      <div style={{ padding: '20px' }}>
+        <Home />
+      </div>
+    </>
   );
 }
 

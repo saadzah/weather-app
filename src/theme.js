@@ -3,7 +3,11 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme(
     {
         palette: {
-            type: 'dark'
+            type: 'dark',
+            background: {
+                paper: "#333333",
+                default: "#212121"
+            },
         },
         typography: {
             fontFamily: [

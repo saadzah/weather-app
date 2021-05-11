@@ -5,6 +5,13 @@ export const setWeatherData = (value) => {
     };
 };
 
+export const setTemperatureScale = (value) => {
+    return {
+        type: 'SET_TEMP_SCALE',
+        payload: value
+    };
+};
+
 export const appInit = () => {
     return {
         type: 'APP_INIT'
